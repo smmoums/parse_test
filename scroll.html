@@ -1,0 +1,90 @@
+<html>
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+<style>
+    body{padding:0;margin: 0;}
+    img{draggale:flase;}
+    ul{list-style:none}
+    .anchor-bar ul li a {
+        width:50px;
+        height:50px;
+        color: #d6e9c6;
+        display: block;
+        background-image: url("1%252Fimages%252Ffeatures%252F20150511%252Fsidebar.png");
+        background-repeat: no-repeat;
+    }
+    #div1{background-image: url("banner.jpg");background-repeat: no-repeat;background-size: cover;}
+    #div2{background-image:url("Ô²×ÀÈý¹ú.png");background-repeat: no-repeat;background-size: cover;}
+    #div3{background-image:url("ÌÆÉ®ºÍÅ®Ñý.png");background-repeat: no-repeat;background-size: cover;}
+    #div4{background-image:url("QQÍ¼Æ¬20160829201227.jpg");background-repeat: no-repeat;background-size: cover;}
+    #div5{background-image:url("QQÍ¼Æ¬20160829201509.jpg");background-repeat: no-repeat;background-size: cover;}
+    #anchor1{  background-position-y: -20px;  }
+    #anchor2{  background-position-y: -75px;  }
+    #anchor3{  background-position-y: -130px;  }
+    #anchor4{  background-position-y: -185px;  }
+    #anchor5{  background-position-y: -245px;  }
+    .anchor-bar ul li a.active {background-position-x: -55px;}
+    .anchor-bar ul li a:not.active {background-position-x: -10px;}
+    #to_top{position: fixed;right: 50px;bottom: 50px; display: none;}
+</style>
+<body>
+<div id="div1" class="screen" data-anchor="anchor1">1
+    <a style="display:block;width: 100px;height: 100px;background-color: yellow">aaa</a>
+</div>
+<div id="div2" class="screen" data-anchor="anchor2">2</div>
+<div id="div3" class="screen" data-anchor="anchor3">3</div>
+<div id="div4" class="screen" data-anchor="anchor4">4</div>
+<div id="div5" class="screen" data-anchor="anchor5">5</div>
+<!--<div style="height: 500px;width: 500px;background-color: #009F95;clear: both"><div style="height: 800px;width: 800px;background-color: #255625"></div></div>
+<div style="height: 500px;width: 500px;background-color: #009F95;float: right"><div style="height: 800px;width: 800px;background-color:lightblue"></div></div>-->
+
+<div style="position: fixed;top:30%;right:0;background-color: #009F95" class="anchor-bar">
+    <ul style="font-size: large">
+        <li><a id="anchor1" class="" href="#div1"></a></li>
+        <li><a id="anchor2" class="" href="#div2"></a></li>
+        <li><a id="anchor3" class="" href="#div3"></a></li>
+        <li><a id="anchor4" class="" href="#div4"></a></li>
+        <li><a id="anchor5" class="" href="#div5"></a></li>
+    </ul>
+</div>
+<div id="to_top">
+    <a class="btn btn-lg btn-primary" onclick="$(window).scrollTop(0)">top</a>
+</div>
+</body>
+<script src="jquery-2.2.4.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script>
+var wwidth=window.innerWidth;
+var whight=window.innerHeight;
+$(document).ready(function(){
+    $(".anchor-bar ul li a").bind({"mouseenter":function(){$(this).addClass("active")},
+        "mouseleave":function(){$(this).removeClass("active")}});
+    adjust();});
+$(window).resize(function(){adjust();});
+function adjust(){
+    wwidth=window.innerWidth;
+    whight=window.innerHeight;
+    $(".screen").css({"height":window.innerHeight,"width":window.innerWidth,"border":"dotted"});
+    $(document).scroll(function(){
+
+    });
+}
+$(window).scroll(function () {
+    $.each($(".screen"),function(){
+       var a=this.offsetTop;
+        if ( (a+whight/4) >= $(window).scrollTop() && (a+whight*3/4) < ($(window).scrollTop() + whight)) {
+            var data_anchor=$(this).data("anchor");
+            $("#"+data_anchor).addClass("active");
+        }else
+        {
+            var data_anchor=$(this).data("anchor");
+            $("#"+data_anchor).removeClass("active");
+        }
+    });
+    if($(window).scrollTop()>whight){
+        $("#to_top").show();
+    }else{
+        $("#to_top").hide();
+    }
+});
+</script>
+</html>

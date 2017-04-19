@@ -1,0 +1,44 @@
+<html>
+<head>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="multiple-select.css" rel="stylesheet">
+</head>
+<body>
+<select multiple="multiple">
+    <option value="1">aaaaa</option>
+    <option value="2">b</option>
+    <option value="3">cccccccccccc</option>
+    <option value="4">d</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">77777777777777777777777</option>
+    <option value="8">8</option>
+</select>
+<a class="btn-default" id="check" href=javascript:check_selected_value()>check</a>
+</body>
+<script src="jquery-2.2.4.min.js"></script>
+<script src="multiple-select.js"></script>
+<script>
+    function check_selected_value (){
+        var a ;
+        a = $("select option:selected").text();
+
+        console.log(a);
+    }
+    //setTimeout("console.log(111111)",5000);
+    $("select").multipleSelect({
+        width: 220,
+        multiple: true,
+        multipleWidth: 55
+    });
+    //$("select").nextNode("ul li").show();
+    var $ul =$('<select></select>');
+    var select = $('select');
+    console.log($ul);
+    console.log(select);
+    for(i=0, j=0; i<10||j<6; i++, j++){
+        console.log(i,"|",j)
+    }
+</script>
+
+</html>
